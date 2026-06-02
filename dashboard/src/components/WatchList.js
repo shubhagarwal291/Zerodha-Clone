@@ -457,24 +457,48 @@ const WatchList = () => {
     const fetchAll = async () => {
       setLoading(true);
 
-      
       const results = await Promise.all(TOP_STOCKS.map(fetchStockData));
       const valid = results.filter(Boolean);
 
       // PRICE ALERT CHECK
       const alerts = JSON.parse(localStorage.getItem("priceAlerts")) || [];
+      console.log("ALERT SYSTEM RUNNING");
+      console.log("Stored Alerts:", alerts);
 
       valid.forEach((stock) => {
+        console.log("Stock:", stock.name, stock.price);
         const currentPrice = parseFloat(stock.price);
 
         alerts.forEach((priceAlert) => {
+          console.log("Checking:", {
+            stockName: stock.name,
+            alertStock: priceAlert.stockName,
+            currentPrice,
+            targetPrice: priceAlert.targetPrice,
+          });
           if (
-            priceAlert.stockName === stock.name &&
+            priceAlert.stockName?.trim().toUpperCase() ===
+              stock.name?.trim().toUpperCase() &&
             priceAlert.condition === ">" &&
-            currentPrice >= priceAlert.targetPrice
+            currentPrice >= Number(priceAlert.targetPrice)
           ) {
             alert(
               `🚨 ALERT!\n${stock.name} reached ₹${currentPrice}\nTarget: ₹${priceAlert.targetPrice}`,
+            );
+
+            // Remove triggered alert
+            const remainingAlerts = alerts.filter(
+              (a) =>
+                !(
+                  a.stockName === priceAlert.stockName &&
+                  a.targetPrice === priceAlert.targetPrice &&
+                  a.condition === priceAlert.condition
+                ),
+            );
+
+            localStorage.setItem(
+              "priceAlerts",
+              JSON.stringify(remainingAlerts),
             );
           }
 
@@ -485,6 +509,21 @@ const WatchList = () => {
           ) {
             alert(
               `🚨 ALERT!\n${stock.name} fell to ₹${currentPrice}\nTarget: ₹${priceAlert.targetPrice}`,
+            );
+
+            // Remove triggered alert
+            const remainingAlerts = alerts.filter(
+              (a) =>
+                !(
+                  a.stockName === priceAlert.stockName &&
+                  a.targetPrice === priceAlert.targetPrice &&
+                  a.condition === priceAlert.condition
+                ),
+            );
+
+            localStorage.setItem(
+              "priceAlerts",
+              JSON.stringify(remainingAlerts),
             );
           }
         });
@@ -673,13 +712,12 @@ const WatchListItem = ({ stock, onTrade }) => {
 
   return (
     <li
-      onMouseEnter={() => setShowActions(true)}
-      onMouseLeave={() => setShowActions(false)}
       style={{
         listStyle: "none",
         position: "relative",
-        zIndex: 9999,
       }}
+      onMouseEnter={() => setShowActions(true)}
+      onMouseLeave={() => setShowActions(false)}
     >
       <div
         style={{
@@ -687,39 +725,31 @@ const WatchListItem = ({ stock, onTrade }) => {
           alignItems: "center",
           justifyContent: "space-between",
           padding: "8px 12px",
+          minWidth: "320px",
           gap: "6px",
           borderRadius: "6px",
-          transition: "background 0.15s",
-          background: showActions ? "#2c2c2c" : "transparent",
+          background: "#2c2c2c",
         }}
       >
-        {/* Stock Name */}
         <p
           style={{
             margin: 0,
             fontSize: "12px",
             fontWeight: "700",
             color: stock.isDown ? "#e53935" : "#4caf50",
-            minWidth: "90px",
+            minWidth: "70px",
           }}
         >
           {stock.name}
         </p>
 
-        {/* Buy & Sell Buttons */}
         {showActions && (
           <>
             <button
               className="buy"
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-
-                console.log("BUY CLICKED");
-
-                if (onTrade) {
-                  onTrade(stock, "buy");
-                }
+              onClick={() => {
+                console.log("BUY CLICKED", stock);
+                onTrade(stock, "buy");
               }}
               style={{
                 padding: "3px 12px",
@@ -731,8 +761,7 @@ const WatchListItem = ({ stock, onTrade }) => {
                 cursor: "pointer",
                 fontWeight: 600,
                 position: "relative",
-                zIndex: 99999,
-                pointerEvents: "auto",
+                zIndex: 9999,
               }}
             >
               Buy
@@ -740,15 +769,9 @@ const WatchListItem = ({ stock, onTrade }) => {
 
             <button
               className="sell"
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-
-                console.log("SELL CLICKED");
-
-                if (onTrade) {
-                  onTrade(stock, "sell");
-                }
+              onClick={() => {
+                console.log("SELL CLICKED", stock);
+                onTrade(stock, "sell");
               }}
               style={{
                 padding: "3px 12px",
@@ -760,32 +783,51 @@ const WatchListItem = ({ stock, onTrade }) => {
                 cursor: "pointer",
                 fontWeight: 600,
                 position: "relative",
-                zIndex: 99999,
-                pointerEvents: "auto",
+                zIndex: 9999,
               }}
             >
               Sell
             </button>
             <button
-              onClick={() => {
+              className="alert"
+              onClick={async () => {
                 const targetPrice = prompt(
-                  `Alert for ${stock.name}\nEnter target price:`,
+                  `Set alert price for ${stock.name}:`,
                 );
 
                 if (!targetPrice) return;
 
-                const alerts =
-                  JSON.parse(localStorage.getItem("priceAlerts")) || [];
+                try {
+                  const token = localStorage.getItem("token");
 
-                alerts.push({
-                  stockName: stock.name,
-                  condition: ">",
-                  targetPrice: Number(targetPrice),
-                });
+                  const newAlert = {
+                    stockName: stock.name,
+                    targetPrice: Number(targetPrice),
+                    condition: ">",
+                  };
 
-                localStorage.setItem("priceAlerts", JSON.stringify(alerts));
+                  await axios.post("http://localhost:3002/alerts", newAlert, {
+                    headers: {
+                      Authorization: `Bearer ${token}`,
+                    },
+                  });
 
-                alert(`✅ Alert set!\n${stock.name} > ₹${targetPrice}`);
+                  // Save in localStorage also
+                  const existingAlerts =
+                    JSON.parse(localStorage.getItem("priceAlerts")) || [];
+
+                  existingAlerts.push(newAlert);
+
+                  localStorage.setItem(
+                    "priceAlerts",
+                    JSON.stringify(existingAlerts),
+                  );
+
+                  alert(`✅ Alert created!\n${stock.name} > ₹${targetPrice}`);
+                } catch (err) {
+                  console.error(err);
+                  alert("Failed to create alert");
+                }
               }}
               style={{
                 padding: "3px 10px",
@@ -796,6 +838,8 @@ const WatchListItem = ({ stock, onTrade }) => {
                 borderRadius: "4px",
                 cursor: "pointer",
                 fontWeight: 600,
+                position: "relative",
+                zIndex: 9999,
               }}
             >
               Alert
@@ -803,7 +847,6 @@ const WatchListItem = ({ stock, onTrade }) => {
           </>
         )}
 
-        {/* Percent + Arrow + Price */}
         <div
           style={{
             display: "flex",
@@ -822,9 +865,19 @@ const WatchListItem = ({ stock, onTrade }) => {
           </span>
 
           {stock.isDown ? (
-            <KeyboardArrowDown style={{ fontSize: "14px", color: "#e53935" }} />
+            <KeyboardArrowDown
+              style={{
+                fontSize: "14px",
+                color: "#e53935",
+              }}
+            />
           ) : (
-            <KeyboardArrowUp style={{ fontSize: "14px", color: "#4caf50" }} />
+            <KeyboardArrowUp
+              style={{
+                fontSize: "14px",
+                color: "#4caf50",
+              }}
+            />
           )}
 
           <span

@@ -21,30 +21,56 @@ export default function Alerts() {
     fetchAlerts();
   }, []);
 
-  const addAlert = async () => {
-    await axios.post(
-      `${API_URL}/alerts`,
-      {
-        stockName: stock,
-        targetPrice,
-        condition: ">",
-      },
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      },
-    );
-
-    setStock("");
-    setTargetPrice("");
-    fetchAlerts();
+const addAlert = async () => {
+  const newAlert = {
+    stockName: stock.toUpperCase(),
+    targetPrice: Number(targetPrice),
+    condition: ">",
   };
 
-  const deleteAlert = async (id) => {
+  await axios.post(
+    `${API_URL}/alerts`,
+    newAlert,
+    {
+      headers: { Authorization: `Bearer ${token}` },
+    }
+  );
+
+  // Save in localStorage also
+  const existingAlerts =
+    JSON.parse(localStorage.getItem("priceAlerts")) || [];
+
+  existingAlerts.push(newAlert);
+
+  localStorage.setItem(
+    "priceAlerts",
+    JSON.stringify(existingAlerts)
+  );
+
+  setStock("");
+  setTargetPrice("");
+
+  fetchAlerts();
+};
+
+  const deleteAlert = async (id, stockName) => {
     await axios.delete(`${API_URL}/alerts/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
+
+    const existingAlerts =
+  JSON.parse(localStorage.getItem("priceAlerts")) || [];
+
+const updatedAlerts = existingAlerts.filter(
+  (a) => a.stockName !== stockName
+);
+
+localStorage.setItem(
+  "priceAlerts",
+  JSON.stringify(updatedAlerts)
+);
 
     fetchAlerts();
   };
@@ -75,7 +101,7 @@ export default function Alerts() {
         <div key={alert._id}>
           {alert.stockName} {alert.condition} ₹{alert.targetPrice}
           <button
-            onClick={() => deleteAlert(alert._id)}
+            onClick={() => deleteAlert(alert._id, alert.stockName)}
             style={{
               marginLeft: "10px",
               background: "#e53935",

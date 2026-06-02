@@ -1,56 +1,54 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <footer style={{ backgroundColor: "rgb(250, 250, 250)" }}>
-      <div className="container border-top mt-5">
-        <div className="row mt-5">
+    <footer className="footer-main mt-5">
+      <div className="container py-5">
+        <div className="row g-4">
           <div className="col">
-            <img src="media/images/logo.svg" style={{ width: "50%" }} />
-            <p>
+            <img src="media/images/logo.svg" style={{ width: "140px" }} alt="Zerodha logo" />
+            <p className="mt-3 mb-0">
               &copy; 2010 - 2024, Not Zerodha Broking Ltd. All rights reserved.
             </p>
           </div>
           <div className="col">
-            <p>Company</p>
-            <a href="">About</a>
+            <p className="footer-heading">Company</p>
+            <Link to="/about" className="footer-link">About</Link>
             <br />
-            <a href="">Products</a>
+            <Link to="/product" className="footer-link">Products</Link>
             <br />
-            <a href="">Pricing</a>
+            <Link to="/pricing" className="footer-link">Pricing</Link>
             <br />
-            <a href="">Referral programme</a>
+            <Link to="/" className="footer-link">Referral programme</Link>
             <br />
-            <a href="">Careers</a>
+            <Link to="/" className="footer-link">Careers</Link>
             <br />
-            <a href="">Zerodha.tech</a>
+            <Link to="/" className="footer-link">Zerodha.tech</Link>
             <br />
-            <a href="">Press & media</a>
+            <Link to="/" className="footer-link">Press & media</Link>
             <br />
-            <a href="">Zerodha cares (CSR)</a>
-            <br />
+            <Link to="/" className="footer-link">Zerodha cares (CSR)</Link>
           </div>
           <div className="col">
-            <p>Support</p>
-            <a href="">Contact</a>
+            <p className="footer-heading">Support</p>
+            <Link to="/support" className="footer-link">Contact</Link>
             <br />
-            <a href="">Support portal</a>
+            <Link to="/" className="footer-link">Support portal</Link>
             <br />
-            <a href="">Z-Connect blog</a>
+            <Link to="/" className="footer-link">Z-Connect blog</Link>
             <br />
-            <a href="">List of charges</a>
+            <Link to="/" className="footer-link">List of charges</Link>
             <br />
-            <a href="">Downloads & resources</a>
-            <br />
+            <Link to="/" className="footer-link">Downloads & resources</Link>
           </div>
           <div className="col">
-            <p>Account</p>
-            <a href="">Open an account</a>
+            <p className="footer-heading">Account</p>
+            <Link to="/signup" className="footer-link">Open an account</Link>
             <br />
-            <a href="">Fund transfer</a>
+            <Link to="/" className="footer-link">Fund transfer</Link>
             <br />
-            <a href="">60 day challenge</a>
-            <br />
+            <Link to="/" className="footer-link">60 day challenge</Link>
           </div>
         </div>
         <div className="mt-5 text-muted" style={{ fontSize: "14px" }}>

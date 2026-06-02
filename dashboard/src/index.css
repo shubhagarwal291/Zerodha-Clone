@@ -267,19 +267,22 @@ code {
 .menus {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
 .menus ul {
-  list-style-type: none;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: nowrap;
 }
 
 .menus li {
-  display: inline-block;
-  margin-right: 30px;
-  text-decoration: none;
+  margin: 0;
 }
-
 .menu {
   font-size: 0.8rem;
   font-weight: 400;

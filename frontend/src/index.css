@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #1f2937;
+  background-color: #f8fafc;
 }
 
 code {
@@ -12,8 +14,73 @@ code {
     monospace;
 }
 
-.nav-link{
-  margin-left: 40px;
+a {
+  color: #387ed1;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #285fa0;
+}
+
+.site-navbar {
+  background-color: #fff;
+  box-shadow: 0 1px 12px rgba(15, 23, 42, 0.06);
+}
+
+.site-navbar .nav-link {
+  margin-left: 24px;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+.site-navbar .nav-link:hover,
+.site-navbar .nav-link.active {
+  color: #387ed1;
+}
+
+.site-navbar .navbar-brand img {
+  width: 130px;
+}
+
+.section-title {
+  color: #111827;
+  font-weight: 600;
+}
+
+.section-muted {
+  color: #6b7280;
+}
+
+.hero-cta-btn {
+  min-width: 200px;
+  border-radius: 999px;
+  padding: 0.75rem 1.75rem;
+}
+
+.footer-main {
+  background-color: #fff;
+  border-top: 1px solid #e5e7eb;
+}
+
+.footer-main p {
+  color: #6b7280;
+}
+
+.footer-main .footer-heading {
+  color: #111827;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.footer-main .footer-link {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  color: #4b5563;
+}
+
+.footer-main .footer-link:hover {
+  color: #387ed1;
 }
 
 #supportHero{
@@ -37,4 +104,23 @@ code {
   font-size: 20px;
   border-radius: 10px;
   border: none;
+}
+
+@media (max-width: 992px) {
+  .site-navbar .nav-link {
+    margin-left: 0;
+    padding: 0.5rem 0;
+  }
+
+  #supportWrapper {
+    margin: 0 20px;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-cta-btn {
+    width: 100%;
+  }
 }

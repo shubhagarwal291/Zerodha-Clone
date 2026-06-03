@@ -290,7 +290,7 @@ code {
 }
 
 .menu.selected {
-  color: rgb(245, 104, 52);
+  color: #2563eb;
 }
 
 hr {
@@ -330,7 +330,7 @@ hr {
 /* sudo selectors */
 
 .menu:hover {
-  color: rgb(245, 104, 52);
+   color: #2563eb;
 }
 
 .profile:hover {
@@ -339,7 +339,7 @@ hr {
 
 .profile:hover .username {
   cursor: pointer;
-  color: rgb(223, 91, 43);
+   color: #2563eb;
 }
 
 .orders {
@@ -439,7 +439,7 @@ hr {
 }
 
 .order-table td.loss {
-  color: rgb(250, 118, 78);
+    color: #387ed1;
 }
 
 .row {
@@ -745,11 +745,11 @@ hr {
 }
 
 .sell {
-  background-color: #ff5722;
+  background-color: #2563eb;
   color: #fff;
   font-weight: 400;
   font-size: 0.8rem;
-  border: 0.7px solid #ff5722;
+  border: 0.7px solid #2563eb;
 }
 
 .action {
@@ -820,19 +820,8 @@ hr {
   cursor: move;
 }
 
-/* TODO */
-/* .list li::before {
-  content: "";
-  background: transparent;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-} */
-
 .watchlist-number ul li:hover {
-  color: rgb(245, 104, 52);
+   color: #2563eb;
   cursor: pointer;
   background: rgb(243, 243, 243);
 }
@@ -845,5 +834,25 @@ hr {
   background-color: rgb(212, 212, 212);
 }
 
+.insight-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 8px;
+  min-width: 240px;
+}
 
+.insight-title {
+  margin: 0;
+  color: #2563eb;
+  font-size: 15px;
+  font-weight: 700;
+}
 
+.insight-quote {
+  margin: 2px 0 0 0;
+  color: #9ca3af;
+  font-size: 12px;
+  font-style: italic;
+  white-space: nowrap;
+}

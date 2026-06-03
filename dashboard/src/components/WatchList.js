@@ -714,7 +714,6 @@ const WatchListItem = ({ stock, onTrade }) => {
 
   return (
     <li
-      onClick={() => alert("LI CLICKED")}
       style={{
         listStyle: "none",
         position: "relative",

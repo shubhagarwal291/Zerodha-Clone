@@ -47,7 +47,34 @@ const Menu = () => {
 
   return (
     <div className="menu-container">
-      <img src="logo.png" style={{ width: "50px" }} alt="logo" />
+      <div
+  style={{
+    display: "flex",
+    flexDirection: "column",
+    lineHeight: "1.1",
+    marginRight: "20px",
+  }}
+>
+  <span
+    style={{
+      color: "#2563eb",
+      fontSize: "21px",
+      fontWeight: "800",
+    }}
+  >
+    InvestSphere
+  </span>
+
+  <span
+    style={{
+      color: "#94a3b8",
+      fontSize: "10px",
+      letterSpacing: "1px",
+    }}
+  >
+    Track. Analyze. Invest.
+  </span>
+</div>
 
       {/* Balance Display */}
       <div
@@ -147,19 +174,9 @@ const Menu = () => {
               </p>
             </Link>
           </li>
-          <li>
-            <Link
-              style={{ textDecoration: "none" }}
-              to="/apps"
-              onClick={() => handleMenuClick(6)}
-            >
-              <p className={selectedMenu === 6 ? activeMenuClass : menuClass}>
-                Apps
-              </p>
-            </Link>
-          </li>
+            
         </ul>
-        <hr />
+        <hr style={{ marginLeft: "16px" }}/>
 
         {/* Profile Section */}
         <div style={{ position: "relative" }}>

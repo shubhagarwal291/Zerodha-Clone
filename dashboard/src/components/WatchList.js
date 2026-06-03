@@ -3,6 +3,7 @@ import axios from "axios";
 import { Tooltip, Grow } from "@mui/material";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import { DoughnutChart } from "./DoughnoutChart";
+import { useNavigate } from "react-router-dom";
 
 const API_URL = "http://localhost:3002";
 
@@ -708,10 +709,12 @@ export default WatchList;
 // ─── WATCHLIST ITEM ───────────────────────────────────────
 // ─── WATCHLIST ITEM ───────────────────────────────────────
 const WatchListItem = ({ stock, onTrade }) => {
+  const navigate = useNavigate();
   const [showActions, setShowActions] = useState(false);
 
   return (
     <li
+      onClick={() => alert("LI CLICKED")}
       style={{
         listStyle: "none",
         position: "relative",
@@ -722,6 +725,7 @@ const WatchListItem = ({ stock, onTrade }) => {
       <div
         style={{
           display: "flex",
+          cursor: "default",
           alignItems: "center",
           justifyContent: "space-between",
           padding: "8px 12px",
@@ -732,8 +736,14 @@ const WatchListItem = ({ stock, onTrade }) => {
         }}
       >
         <p
+          onClick={(e) => {
+            e.stopPropagation();
+            console.log("CLICKED", stock.name);
+            navigate(`/stock/${stock.name}`);
+          }}
           style={{
             margin: 0,
+            cursor: "pointer",
             fontSize: "12px",
             fontWeight: "700",
             color: stock.isDown ? "#e53935" : "#4caf50",

@@ -821,7 +821,7 @@ hr {
 }
 
 /* TODO */
-.list li::before {
+/* .list li::before {
   content: "";
   background: transparent;
   width: 100%;
@@ -829,7 +829,7 @@ hr {
   position: absolute;
   top: 0;
   left: 0;
-}
+} */
 
 .watchlist-number ul li:hover {
   color: rgb(245, 104, 52);

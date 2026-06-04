@@ -5,9 +5,9 @@ function Hero() {
     <div className="container">
       <div className="row p-5 mt-5 mb-5">
         <h1 className="fs-2 text-center">
-          We pioneered the discount broking model in India
+          Empowering Investors with Smarter Insights
           <br />
-          Now, we are breaking ground with our technology.
+          Track. Analyze. Invest.
         </h1>
       </div>
 
@@ -17,38 +17,42 @@ function Hero() {
       >
         <div className="col-6 p-5">
           <p>
-            We kick-started operations on the 15th of August, 2010 with the goal
-            of breaking all barriers that traders and investors face in India in
-            terms of cost, support, and technology. We named the company
-            Zerodha, a combination of Zero and "Rodha", the Sanskrit word for
-            barrier.
+            InvestSphere is a modern investment analytics and portfolio
+            management platform designed to help investors track holdings,
+            monitor portfolio performance, and make informed financial
+            decisions.
           </p>
+
           <p>
-            Today, our disruptive pricing models and in-house technology have
-            made us the biggest stock broker in India.
+            Our mission is to simplify investing through intuitive tools,
+            real-time insights, and portfolio analytics that transform complex
+            financial data into actionable information.
           </p>
+
           <p>
-            Over 1+ Crore clients place millions of orders every day through our
-            powerful ecosystem of investment platforms, contributing over 15% of
-            all Indian retail trading volumes.
+            Whether you are a beginner investor or an experienced trader,
+            InvestSphere provides a streamlined experience for monitoring
+            investments and understanding market trends.
           </p>
         </div>
+
         <div className="col-6 p-5">
           <p>
-            In addition, we run a number of popular open online educational and
-            community initiatives to empower retail traders and investors.
+            We offer portfolio tracking, stock monitoring, smart alerts, and
+            market intelligence features that help users stay connected with
+            their investments.
           </p>
+
           <p>
-            <a href="" style={{ textDecoration: "none" }}>
-              Rainmatter
-            </a>
-            , our fintech fund and incubator, has invested in several fintech
-            startups with the goal of growing the Indian capital markets.
+            Our goal is to build a transparent and accessible investment
+            ecosystem where users can confidently manage and analyze their
+            portfolios.
           </p>
+
           <p>
-            And yet, we are always up to something new every day. Catch up on
-            the latest updates on our blog or see what the media is saying about
-            us.
+            As InvestSphere continues to grow, we aim to introduce advanced
+            analytics, real-time market data, and paper trading capabilities to
+            enhance the investing experience.
           </p>
         </div>
       </div>

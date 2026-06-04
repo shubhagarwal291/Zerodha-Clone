@@ -5,23 +5,17 @@ function Navbar() {
   const location = useLocation();
 
   const navItems = [
-    { label: "Signup", to: "/signup" },
     { label: "About", to: "/about" },
-    { label: "Product", to: "/product" },
-    { label: "Pricing", to: "/pricing" },
-    { label: "Support", to: "/support" },
+    { label: "Market News", to: "/market-news" },
+    { label: "Resources", to: "/resources" },
+    { label: "Contact", to: "/contact" },
+    { label: "Login", to: "/login" },
   ];
-
   return (
-    <nav
-      className="navbar navbar-expand-lg border-bottom sticky-top site-navbar"
-    >
+    <nav className="navbar navbar-expand-lg border-bottom sticky-top site-navbar">
       <div className="container py-2">
-        <Link className="navbar-brand" to="/">
-          <img
-            src="media/images/logo.svg"
-            alt="Zerodha logo"
-          />
+        <Link className="navbar-brand fw-bold fs-3 text-primary" to="/">
+          InvestSphere
         </Link>
         <button
           className="navbar-toggler"
@@ -50,10 +44,10 @@ function Navbar() {
             ))}
             <li className="nav-item ms-lg-2">
               <Link className="btn btn-primary btn-sm px-3" to="/signup">
-                Get Started
+                Sign Up
               </Link>
             </li>
-            </ul>
+          </ul>
         </div>
       </div>
     </nav>

@@ -2,45 +2,65 @@ import React from "react";
 
 function Stats() {
   return (
-    <div className="container p-3">
-      <div className="row p-5">
-        <div className="col-6 p-5">
-          <h1 className="fs-2 mb-5">Trust with confidence</h1>
-          <h2 className="fs-4">Customer-first always</h2>
-          <p className="text-muted">
-            That's why 1.3+ crore customers trust Zerodha with ₹3.5+ lakh crores
-            worth of equity investments.
-          </p>
-          <h2 className="fs-4">No spam or gimmicks</h2>
-          <p className="text-muted">
-            No gimmicks, spam, "gamification", or annoying push notifications.
-            High quality apps that you use at your pace, the way you like.
-          </p>
-          <h2 className="fs-4">The Zerodha universe</h2>
-          <p className="text-muted">
-            Not just an app, but a whole ecosystem. Our investments in 30+
-            fintech startups offer you tailored services specific to your needs.
-          </p>
-          <h2 className="fs-4">Do better with money</h2>
-          <p className="text-muted">
-            With initiatives like Nudge and Kill Switch, we don't just
-            facilitate transactions, but actively help you do better with your
-            money.
-          </p>
-        </div>
-        <div className="col-6 p-5">
-          <img src="media/images/ecosystem.png" style={{ width: "90%" }} />
-          <div className="text-center">
-            <a href="" className="mx-5" style={{ textDecoration: "none" }}>
-              Explore our products{" "}
-              <i className="fa fa-long-arrow-right" aria-hidden="true"></i>
-            </a>
-            <a href="" style={{ textDecoration: "none" }}>
-              Try Kite demo{" "}
-              <i className="fa fa-long-arrow-right" aria-hidden="true"></i>
-            </a>
+    <div className="container py-5">
+      {/* Heading */}
+      <div className="text-center mb-5">
+        <h1 className="fw-bold">Why Investors Choose InvestSphere</h1>
+      </div>
+
+      {/* Features */}
+      <div className="row g-5">
+        {/* Left Side */}
+        <div className="col-md-6">
+          <div className="mb-5">
+            <h3 className="fw-bold">Portfolio Tracking</h3>
+            <p className="text-muted fs-5">
+              Monitor holdings, portfolio value, invested capital, and
+              profit/loss through a clean and intuitive dashboard.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="fw-bold">Investment Analytics</h3>
+            <p className="text-muted fs-5">
+              Analyze portfolio performance and make informed investment
+              decisions using meaningful financial insights.
+            </p>
           </div>
         </div>
+
+        {/* Right Side */}
+        <div className="col-md-6">
+          <div className="mb-5">
+            <h3 className="fw-bold">Market Intelligence</h3>
+            <p className="text-muted fs-5">
+              Stay updated with market movements, stock information, and
+              investment-focused resources.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="fw-bold">Smart Alerts</h3>
+            <p className="text-muted fs-5">
+              Create custom alerts and monitor important price movements to stay
+              ahead of market opportunities.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Dashboard Image */}
+      <div className="text-center mt-5">
+        <img
+          src="media/images/dashboard2.png"
+          alt="Dashboard Preview"
+          style={{
+            width: "90%",
+            maxWidth: "1200px",
+            borderRadius: "12px",
+            boxShadow: "0 0 20px rgba(0,0,0,0.3)",
+          }}
+        />
       </div>
     </div>
   );

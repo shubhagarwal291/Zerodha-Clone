@@ -9,6 +9,10 @@ import AboutPage from "./landing_page/about/AboutPage";
 import ProductPage from "./landing_page/products/ProductsPage";
 import PricingPage from "./landing_page/pricing/PricingPage";
 import SupportPage from "./landing_page/support/SupportPage";
+import MarketNewsPage from "./landing_page/marketnews/MarketNewsPage";
+import ResourcesPage from "./landing_page/resources/ResourcesPage";
+import ContactPage from "./landing_page/contact/ContactPage";
+import Login from "./landing_page/login/Login";
 
 import NotFound from "./landing_page/NotFound";
 import Navbar from "./landing_page/Navbar";
@@ -21,13 +25,16 @@ root.render(
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/signup" element={<Signup />} />
+      <Route path="/market-news" element={<MarketNewsPage />} />
+      <Route path="/resources" element={<ResourcesPage />} />
       <Route path="/about" element={<AboutPage />} />
+      <Route path="/contact" element={<ContactPage />} />
+      <Route path="/login" element={<Login />} />
       <Route path="/product" element={<ProductPage />} />
       <Route path="/pricing" element={<PricingPage />} />
       <Route path="/support" element={<SupportPage />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
     <Footer />
-  </BrowserRouter>
+  </BrowserRouter>,
 );
-

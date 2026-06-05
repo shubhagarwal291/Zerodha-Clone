@@ -86,8 +86,8 @@ function Signup() {
             </h5>
             <p className="text-muted mb-4" style={{ fontSize: "14px" }}>
               {isLogin
-                ? "Login to access your Zerodha dashboard"
-                : "Invest in stocks, F&O, mutual funds and more"}
+                ? "Login to access your InvestSphere dashboard"
+                : "Invest in stocks, options, mutual funds and more"}
             </p>
 
             {error && (

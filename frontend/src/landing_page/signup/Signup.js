@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const API_URL = "http://localhost:3002";
+const API_URL = "https://investsphere-stock-trading-platform.onrender.com";
 
 function Signup() {
   const [isLogin, setIsLogin] = React.useState(false);

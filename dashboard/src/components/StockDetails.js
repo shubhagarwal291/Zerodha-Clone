@@ -12,8 +12,8 @@ export default function StockDetails() {
     const fetchDetails = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:3002/stock-details/${symbol}`
-        );
+  `https://investsphere-stock-trading-platform.onrender.com/stock-details/${symbol}`
+);
 
         setStock(res.data);
       } catch (err) {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const API_URL = "http://localhost:3002";
+const API_URL = "https://investsphere-stock-trading-platform.onrender.com";
 
 const DailyReward = () => {
   const [cooldown, setCooldown] = useState(null);

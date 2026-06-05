@@ -19,7 +19,7 @@ const BuyActionWindow = ({ uid }) => {
 
     const endpoint = mode === "BUY" ? "/trade/buy" : "/trade/sell";
 
-    axios.post(`http://localhost:3002${endpoint}`, {
+    axios.post(`https://investsphere-stock-trading-platform.onrender.com${endpoint}`, {
       stockName: uid,
       qty: parseInt(stockQuantity),
       price: parseFloat(stockPrice),

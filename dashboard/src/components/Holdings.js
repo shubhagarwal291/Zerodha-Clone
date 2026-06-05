@@ -11,7 +11,7 @@ const Holdings = () => {
     const token = localStorage.getItem("token");
 
     axios
-      .get("http://localhost:3002/trade/portfolio", {
+      .get("https://investsphere-stock-trading-platform.onrender.com/trade/portfolio", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -46,7 +46,7 @@ const Holdings = () => {
       const token = localStorage.getItem("token");
 
       const res = await axios.post(
-        "http://localhost:3002/trade/sell",
+         "https://investsphere-stock-trading-platform.onrender.com/trade/sell",
         {
           stockName: stock.stockName,
           qty: parseInt(qty),

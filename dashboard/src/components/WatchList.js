@@ -5,7 +5,7 @@ import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import { DoughnutChart } from "./DoughnoutChart";
 import { useNavigate } from "react-router-dom";
 
-const API_URL = "http://localhost:3002";
+const API_URL = "https://investsphere-stock-trading-platform.onrender.com";
 
 const TOP_STOCKS = [
   "RELIANCE",
@@ -815,11 +815,15 @@ const WatchListItem = ({ stock, onTrade }) => {
                     condition: ">",
                   };
 
-                  await axios.post("http://localhost:3002/alerts", newAlert, {
-                    headers: {
-                      Authorization: `Bearer ${token}`,
+                  await axios.post(
+                    "https://investsphere-stock-trading-platform.onrender.com/alerts",
+                    newAlert,
+                    {
+                      headers: {
+                        Authorization: `Bearer ${token}`,
+                      },
                     },
-                  });
+                  );
 
                   // Save in localStorage also
                   const existingAlerts =

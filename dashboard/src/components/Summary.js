@@ -3,7 +3,7 @@ import axios from "axios";
 import PortfolioPerformanceChart from "./PortfolioPerformanceChart";
 import DailyReward from "./DailyReward";
 
-const API_URL = "http://localhost:3002";
+const API_URL = "https://investsphere-stock-trading-platform.onrender.com";
 
 const Summary = () => {
   const [balance, setBalance] = useState(null);

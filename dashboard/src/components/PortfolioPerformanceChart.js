@@ -17,11 +17,14 @@ const PortfolioPerformanceChart = () => {
     const token = localStorage.getItem("token");
 
     axios
-      .get("http://localhost:3002/trade/portfolio-history", {
-        headers: {
-          Authorization: `Bearer ${token}`,
+      .get(
+        "https://investsphere-stock-trading-platform.onrender.com/trade/portfolio-history",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         },
-      })
+      )
       .then((res) => {
         const chartData = res.data.map((item, index) => ({
           day: `#${index + 1}`,

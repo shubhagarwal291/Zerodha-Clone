@@ -19,7 +19,8 @@ function ProtectedRoute({ children }) {
 
   const token = localStorage.getItem("token");
   if (!token) {
-    window.location.href = "http://localhost:3000/signup";
+    window.location.href =
+  "https://investsphere-stock-trading-platform.vercel.app/signup";
     return null;
   }
   return children;

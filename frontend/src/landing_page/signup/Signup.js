@@ -33,7 +33,7 @@ function Signup() {
       }
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
-      window.location.href = `https://YOUR-DASHBOARD-VERCEL-URL.vercel.app?token=${res.data.token}`;
+      window.location.href = `https://invest-sphere-dashboard.vercel.app/?token=${res.data.token}`;
     } catch (err) {
       setError(err.response?.data?.message || "Something went wrong.");
     } finally {

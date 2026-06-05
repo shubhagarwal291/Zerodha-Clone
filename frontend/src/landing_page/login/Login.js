@@ -11,7 +11,7 @@ function Login() {
     e.preventDefault();
 
     if (email && password) {
-      window.location.href = "https://your-dashboard.vercel.app";
+      window.location.href = "https://invest-sphere-dashboard.vercel.app";
     } else {
       alert("Please enter email and password");
     }

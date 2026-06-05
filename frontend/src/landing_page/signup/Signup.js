@@ -47,11 +47,15 @@ function Signup() {
         <div className="col-md-5">
           <div className="border rounded-3 shadow-sm p-4 p-md-5 bg-white">
             <div className="text-center mb-4">
-              <img
-                src="/media/images/logo.svg"
-                alt="Zerodha logo"
-                style={{ width: "120px" }}
-              />
+              <h2
+                style={{
+                  color: "#387ed1",
+                  fontWeight: "bold",
+                  margin: 0,
+                }}
+              >
+                InvestSphere
+              </h2>
             </div>
 
             <div className="d-flex mb-4 border rounded-2 overflow-hidden">

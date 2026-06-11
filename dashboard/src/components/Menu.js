@@ -42,7 +42,8 @@ const Menu = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     localStorage.removeItem("username");
-    navigate("/login");
+    window.location.href =
+      "https://investsphere-stock-trading-platform.vercel.app/signup";
   };
 
   const menuClass = "menu";
@@ -51,33 +52,33 @@ const Menu = () => {
   return (
     <div className="menu-container">
       <div
-  style={{
-    display: "flex",
-    flexDirection: "column",
-    lineHeight: "1.1",
-    marginRight: "20px",
-  }}
->
-  <span
-    style={{
-      color: "#2563eb",
-      fontSize: "21px",
-      fontWeight: "800",
-    }}
-  >
-    InvestSphere
-  </span>
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          lineHeight: "1.1",
+          marginRight: "20px",
+        }}
+      >
+        <span
+          style={{
+            color: "#2563eb",
+            fontSize: "21px",
+            fontWeight: "800",
+          }}
+        >
+          InvestSphere
+        </span>
 
-  <span
-    style={{
-      color: "#94a3b8",
-      fontSize: "10px",
-      letterSpacing: "1px",
-    }}
-  >
-    Track. Analyze. Invest.
-  </span>
-</div>
+        <span
+          style={{
+            color: "#94a3b8",
+            fontSize: "10px",
+            letterSpacing: "1px",
+          }}
+        >
+          Track. Analyze. Invest.
+        </span>
+      </div>
 
       {/* Balance Display */}
       <div
@@ -177,9 +178,8 @@ const Menu = () => {
               </p>
             </Link>
           </li>
-            
         </ul>
-        <hr style={{ marginLeft: "16px" }}/>
+        <hr style={{ marginLeft: "16px" }} />
 
         {/* Profile Section */}
         <div style={{ position: "relative" }}>

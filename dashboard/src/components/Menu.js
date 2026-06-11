@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const API_URL = "https://investsphere-stock-trading-platform.onrender.com";
 
 const Menu = () => {
   const [selectedMenu, setSelectedMenu] = useState(0);
+  const navigate = useNavigate();
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
   const [balance, setBalance] = useState(null);
 
@@ -39,7 +41,8 @@ const Menu = () => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    window.location.href = "http://localhost:3000/signup";
+    localStorage.removeItem("username");
+    navigate("/dashboard");
   };
 
   const menuClass = "menu";

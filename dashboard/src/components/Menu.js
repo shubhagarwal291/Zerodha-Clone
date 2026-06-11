@@ -42,7 +42,7 @@ const Menu = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     localStorage.removeItem("username");
-    navigate("/dashboard");
+    navigate("/login");
   };
 
   const menuClass = "menu";
